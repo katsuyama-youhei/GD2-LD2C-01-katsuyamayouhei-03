@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4522552197266031301}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   forceMagnitude: 4
   forceUp: 6
   forceDown: 3
-  bulletRightPrefab: {fileID: 0}
-  bulletLeftPrefab: {fileID: 0}
-  bulletUpPrefab: {fileID: 0}
-  bulletDownPrefab: {fileID: 0}
+  bulletRightPrefab: {fileID: 987864510205702804, guid: dbd65dd605f57a244b1a614a56b8d1f6, type: 3}
+  bulletLeftPrefab: {fileID: 4797164850051334880, guid: 78211dffdad4b6541941589b303bd6e1, type: 3}
+  bulletUpPrefab: {fileID: 4308489836998132735, guid: c4a03caa74aafe54aad7e1c70ec3f4aa, type: 3}
+  bulletDownPrefab: {fileID: 935054560041752435, guid: aef898aa2af84de43a3fb2038c6541c8, type: 3}
