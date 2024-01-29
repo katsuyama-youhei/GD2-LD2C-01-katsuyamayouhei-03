@@ -35,7 +35,7 @@ public class PlayerManagerScript : MonoBehaviour
     {
         Damege();
 
-        Debug.Log("hp" + hp);
+        //Debug.Log("hp" + hp);
     }
 
     void Damege()
