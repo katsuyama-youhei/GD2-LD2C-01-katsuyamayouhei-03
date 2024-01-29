@@ -16,10 +16,11 @@ public class BulletUpScript : MonoBehaviour
         lifeTime = 0.3f;
         leftLifeTime = lifeTime;
         defaultScale = transform.localScale;
-        float maxVelocity = 5;
+        float maxVelocity = 5f;
+        float max = 2f;
         velocity = new Vector3(
             Random.Range(-maxVelocity, maxVelocity),
-            0,
+              Random.Range(-max, max),
             0);
     }
 

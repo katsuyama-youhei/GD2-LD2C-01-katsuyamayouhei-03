@@ -80,7 +80,7 @@ public class PlayerMoveScript : MonoBehaviour
             isFireUp = false;
 
             // ˆÚ“®•ûŒü‚Ì‹t•ûŒü‚É’e‚ð”ò‚Î‚·
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
                 Instantiate(bulletDownPrefab, pos, Quaternion.identity);
@@ -95,7 +95,7 @@ public class PlayerMoveScript : MonoBehaviour
             isFireDown = false;
 
             // ˆÚ“®•ûŒü‚Ì‹t•ûŒü‚É’e‚ð”ò‚Î‚·
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
                 Instantiate(bulletUpPrefab, pos, Quaternion.identity);
@@ -113,7 +113,7 @@ public class PlayerMoveScript : MonoBehaviour
             isFireRight = false;
 
             // ˆÚ“®•ûŒü‚Ì‹t•ûŒü‚É’e‚ð”ò‚Î‚·
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
                 Instantiate(bulletLeftPrefab, pos, Quaternion.identity);
@@ -128,7 +128,7 @@ public class PlayerMoveScript : MonoBehaviour
             isFireLeft = false;
 
             // ˆÚ“®•ûŒü‚Ì‹t•ûŒü‚É’e‚ð”ò‚Î‚·
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
                 Instantiate(bulletRightPrefab, pos, Quaternion.identity);

@@ -17,8 +17,9 @@ public class BulletLeftScript : MonoBehaviour
         leftLifeTime = lifeTime;
         defaultScale = transform.localScale;
         float maxVelocity = 5;
+        float max = 2f;
         velocity = new Vector3(
-            1f,
+             Random.Range(-max, max),
             Random.Range(-maxVelocity, maxVelocity),
             0);
     }
