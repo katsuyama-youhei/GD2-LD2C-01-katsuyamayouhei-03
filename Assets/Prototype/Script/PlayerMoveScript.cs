@@ -18,15 +18,22 @@ public class PlayerMoveScript : MonoBehaviour
     public GameObject bulletDownPrefab;
 
     private float lifeFireTime;
-    private float fireLeftTime;
-    private float fireRightTime;
     private float fireUpTime;
     private float fireDownTime;
 
-    private bool isFireLeft = true;
-    private bool isFireRight = true;
+    private float fireHorizontalTime;
+    private float fireVerticalTime;
+
     private bool isFireUp = true;
     private bool isFireDown = true;
+
+    private bool isFireHorizontal=false;
+    private bool isFireVertical=false;
+
+    private bool isScaleChange = false;
+    private Vector3 orijinScale;
+    private Vector3 changeScale;
+    private float scaleTime;
 
 
     // Start is called before the first frame update
@@ -34,11 +41,14 @@ public class PlayerMoveScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         lifeFireTime = 0.3f;
-        fireLeftTime = lifeFireTime;
-        fireRightTime = lifeFireTime;
         fireUpTime = lifeFireTime;
         fireDownTime = lifeFireTime;
+        fireHorizontalTime= lifeFireTime;
+        fireVerticalTime= lifeFireTime;
+        scaleTime = lifeFireTime;
 
+        orijinScale = transform.localScale;
+        changeScale = orijinScale;
 
     }
 
@@ -48,9 +58,11 @@ public class PlayerMoveScript : MonoBehaviour
 
         PlayerMove();
 
-        FlipPlayer();
+       // FlipPlayer();
 
         FireJudgment();
+
+        FireScale();
 
     }
 
@@ -104,33 +116,46 @@ public class PlayerMoveScript : MonoBehaviour
 
 
 
-        if (Input.GetButtonDown("Fire2") && isFireRight)
+        if (Input.GetButtonDown("Fire2") && !isFireHorizontal)
         {
+
+            FlipPlayer();
+
             // AddForceメソッドで力を加える
             // 引数のVector2は力の方向を示し、forceMagnitudeは力の大きさ
             rb.AddForce(Vector2.right * forceMagnitude, ForceMode2D.Impulse);
 
-            isFireRight = false;
+            isFireHorizontal = true;
+
+            isScaleChange = true;
+            orijinScale = transform.localScale;
+            changeScale = orijinScale;
 
             // 移動方向の逆方向に弾を飛ばす
             for (int i = 0; i < 8; i++)
             {
-                Vector3 pos = new Vector3(transform.position.x-0.72f, transform.position.y, 0);
+                Vector3 pos = new Vector3(transform.position.x - 0.72f, transform.position.y, 0);
                 Instantiate(bulletLeftPrefab, pos, Quaternion.identity);
             }
         }
-        else if (Input.GetButtonDown("Fire3") && isFireLeft)
+        else if (Input.GetButtonDown("Fire3") && !isFireHorizontal)
         {
+            FlipPlayer();
+
             // AddForceメソッドで力を加える
             // 引数のVector2は力の方向を示し、forceMagnitudeは力の大きさ
             rb.AddForce(Vector2.left * forceMagnitude, ForceMode2D.Impulse);
 
-            isFireLeft = false;
+            isFireHorizontal = true;
+
+            isScaleChange = true;
+            orijinScale = transform.localScale;
+            changeScale = orijinScale;
 
             // 移動方向の逆方向に弾を飛ばす
             for (int i = 0; i < 8; i++)
             {
-                Vector3 pos = new Vector3(transform.position.x+0.72f, transform.position.y, 0);
+                Vector3 pos = new Vector3(transform.position.x + 0.72f, transform.position.y, 0);
                 Instantiate(bulletRightPrefab, pos, Quaternion.identity);
             }
         }
@@ -138,7 +163,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     void FireJudgment()
     {
-        if (!isFireLeft)
+      /*  if (!isFireLeft)
         {
             fireLeftTime -= Time.deltaTime;
             if (fireLeftTime <= 0)
@@ -156,7 +181,7 @@ public class PlayerMoveScript : MonoBehaviour
                 fireRightTime = lifeFireTime;
                 isFireRight = true;
             }
-        }
+        }*/
         if (!isFireUp)
         {
             fireUpTime -= Time.deltaTime;
@@ -176,6 +201,54 @@ public class PlayerMoveScript : MonoBehaviour
                 isFireDown = true;
             }
         }
+
+        if (isFireHorizontal)
+        {
+            fireHorizontalTime-=Time.deltaTime;
+            if(fireHorizontalTime <= 0)
+            {
+                fireHorizontalTime = lifeFireTime;
+                isFireHorizontal = false;
+            }
+        }
+
+        if (isFireVertical)
+        {
+            fireVerticalTime -= Time.deltaTime;
+            if (fireVerticalTime <= 0)
+            {
+                fireVerticalTime = lifeFireTime;
+                isFireVertical = false;
+            }
+        }
+
+    }
+
+    void FireScale()
+    {
+        if (isScaleChange)
+        {
+            scaleTime -= Time.deltaTime;
+            changeScale.y -= Time.deltaTime;
+            if (orijinScale.x >=0)
+            {
+                changeScale.x += Time.deltaTime;
+            }
+            else
+            {
+                changeScale.x -= Time.deltaTime;
+            }
+            
+            transform.localScale = changeScale;
+            if (scaleTime <= 0)
+            {
+                scaleTime = lifeFireTime;
+                changeScale = orijinScale;
+                transform.localScale = orijinScale;
+                isScaleChange = false;
+            }
+        }
+
     }
 
 
