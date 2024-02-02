@@ -21,7 +21,6 @@ public class EnemyScript : MonoBehaviour
     public float newAlpha = 0.5f;
     private float maxAlpha = 1f;
 
-    private bool isReversal = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,24 +34,6 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // プレイヤーとの位置関係で移動する向きを変更
-        if (isReversal)
-        {
-            if (player.transform.position.x > transform.position.x + 10f)
-            {
-                speed *= -1;
-                isReversal = false;
-            }
-        }
-        else
-        {
-            if (player.transform.position.x < transform.position.x - 10f)
-            {
-                speed *= -1;
-                isReversal = true;
-            }
-        }
-
 
         if (!isStart)
         {
@@ -99,28 +80,6 @@ public class EnemyScript : MonoBehaviour
         rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
-    /*  private void OnCollisionEnter2D(Collision2D collision)
-      {
-          GameObject collidedObject = collision.collider.gameObject;
-
-          if (collidedObject.CompareTag("Bullet"))
-          {
-              if (isCount)
-              {
-                  hp -= 1f;
-                  isCount = false;
-                  Color currentColor = spriteRenderer.color;
-
-                  // 新しい透明度を設定
-                  currentColor.a = newAlpha;
-
-                  // 新しい色を設定
-                  spriteRenderer.color = currentColor;
-              }
-              Debug.Log("hit");
-          }
-      }*/
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         string collidedObjectTag = other.tag;
@@ -141,5 +100,21 @@ public class EnemyScript : MonoBehaviour
             }
             Debug.Log("hit");
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject collidedObject = collision.collider.gameObject;
+
+        if (collidedObject.CompareTag("Enemy"))
+        {
+            speed *= -1;
+        }
+        else if (collidedObject.CompareTag("Reverse"))
+        {
+            speed *= -1;
+        }
+
+
     }
 }

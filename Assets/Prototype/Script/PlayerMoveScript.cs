@@ -115,7 +115,7 @@ public class PlayerMoveScript : MonoBehaviour
             // ˆÚ“®•ûŒü‚Ì‹t•ûŒü‚É’e‚ð”ò‚Î‚·
             for (int i = 0; i < 8; i++)
             {
-                Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
+                Vector3 pos = new Vector3(transform.position.x-0.72f, transform.position.y, 0);
                 Instantiate(bulletLeftPrefab, pos, Quaternion.identity);
             }
         }
@@ -130,7 +130,7 @@ public class PlayerMoveScript : MonoBehaviour
             // ˆÚ“®•ûŒü‚Ì‹t•ûŒü‚É’e‚ð”ò‚Î‚·
             for (int i = 0; i < 8; i++)
             {
-                Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
+                Vector3 pos = new Vector3(transform.position.x+0.72f, transform.position.y, 0);
                 Instantiate(bulletRightPrefab, pos, Quaternion.identity);
             }
         }
