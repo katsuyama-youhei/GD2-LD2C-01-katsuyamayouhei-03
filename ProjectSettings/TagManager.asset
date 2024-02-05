@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Coin
   - Reverse
+  - Goal
+  - Next
   layers:
   - Default
   - TransparentFX

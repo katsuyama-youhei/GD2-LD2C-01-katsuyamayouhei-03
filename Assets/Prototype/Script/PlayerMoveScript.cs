@@ -35,16 +35,24 @@ public class PlayerMoveScript : MonoBehaviour
     private Vector3 changeScale;
     private float scaleTime;
 
+    SpriteRenderer spriteRenderer;
+    public Sprite spriteHorizontal;
+    public Sprite spriteVertical;
+    public Sprite spriteDown;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         lifeFireTime = 0.3f;
         fireUpTime = lifeFireTime;
         fireDownTime = lifeFireTime;
+        
         fireHorizontalTime= lifeFireTime;
         fireVerticalTime= lifeFireTime;
+        
         scaleTime = lifeFireTime;
 
         orijinScale = transform.localScale;
@@ -58,11 +66,9 @@ public class PlayerMoveScript : MonoBehaviour
 
         PlayerMove();
 
-       // FlipPlayer();
-
         FireJudgment();
 
-        FireScale();
+       // FireScale();
 
     }
 
@@ -91,6 +97,8 @@ public class PlayerMoveScript : MonoBehaviour
 
             isFireUp = false;
 
+            spriteRenderer.sprite = spriteVertical;
+
             // ˆÚ“®•ûŒü‚Ì‹t•ûŒü‚É’e‚ð”ò‚Î‚·
             for (int i = 0; i < 8; i++)
             {
@@ -105,6 +113,7 @@ public class PlayerMoveScript : MonoBehaviour
             rb.AddForce(Vector2.down * forceDown, ForceMode2D.Impulse);
 
             isFireDown = false;
+            spriteRenderer.sprite = spriteDown;
 
             // ˆÚ“®•ûŒü‚Ì‹t•ûŒü‚É’e‚ð”ò‚Î‚·
             for (int i = 0; i < 8; i++)
@@ -126,6 +135,7 @@ public class PlayerMoveScript : MonoBehaviour
             rb.AddForce(Vector2.right * forceMagnitude, ForceMode2D.Impulse);
 
             isFireHorizontal = true;
+            spriteRenderer.sprite = spriteHorizontal;
 
             isScaleChange = true;
             orijinScale = transform.localScale;
@@ -147,6 +157,7 @@ public class PlayerMoveScript : MonoBehaviour
             rb.AddForce(Vector2.left * forceMagnitude, ForceMode2D.Impulse);
 
             isFireHorizontal = true;
+            spriteRenderer.sprite = spriteHorizontal;
 
             isScaleChange = true;
             orijinScale = transform.localScale;
@@ -163,25 +174,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     void FireJudgment()
     {
-      /*  if (!isFireLeft)
-        {
-            fireLeftTime -= Time.deltaTime;
-            if (fireLeftTime <= 0)
-            {
-                fireLeftTime = lifeFireTime;
-                isFireLeft = true;
-            }
-        }
-
-        if (!isFireRight)
-        {
-            fireRightTime -= Time.deltaTime;
-            if (fireRightTime <= 0)
-            {
-                fireRightTime = lifeFireTime;
-                isFireRight = true;
-            }
-        }*/
+     
         if (!isFireUp)
         {
             fireUpTime -= Time.deltaTime;
@@ -224,7 +217,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     }
 
-    void FireScale()
+    /*void FireScale()
     {
         if (isScaleChange)
         {
@@ -249,7 +242,7 @@ public class PlayerMoveScript : MonoBehaviour
             }
         }
 
-    }
+    }*/
 
 
 }

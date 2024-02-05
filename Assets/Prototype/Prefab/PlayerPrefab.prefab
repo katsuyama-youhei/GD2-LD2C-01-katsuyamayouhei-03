@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5b91b6e8e279597449e119c6e9e082bb, type: 3}
-  m_Color: {r: 0.21960784, g: 0.7058824, b: 0.54509807, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 736cefcb155bfda41b66c1261e5ab129, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -169,3 +169,6 @@ MonoBehaviour:
   bulletLeftPrefab: {fileID: 4797164850051334880, guid: 78211dffdad4b6541941589b303bd6e1, type: 3}
   bulletUpPrefab: {fileID: 4308489836998132735, guid: c4a03caa74aafe54aad7e1c70ec3f4aa, type: 3}
   bulletDownPrefab: {fileID: 935054560041752435, guid: aef898aa2af84de43a3fb2038c6541c8, type: 3}
+  spriteHorizontal: {fileID: 21300000, guid: 736cefcb155bfda41b66c1261e5ab129, type: 3}
+  spriteVertical: {fileID: 21300000, guid: 5b91b6e8e279597449e119c6e9e082bb, type: 3}
+  spriteDown: {fileID: 21300000, guid: 9a4495a44cec7e1408e72b0ccb1a88fd, type: 3}

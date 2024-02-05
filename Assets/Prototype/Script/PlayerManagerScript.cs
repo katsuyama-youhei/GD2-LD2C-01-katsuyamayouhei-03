@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManagerScript : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class PlayerManagerScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public float newAlpha = 0.5f;
     private float maxAlpha = 1f;
+
+    public GameObject ClearText;
+    public GameObject ABottam;
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +91,17 @@ public class PlayerManagerScript : MonoBehaviour
         if (otherTag == "Enemy" && isDamege == true)
         {
             isCollision = true;
+        }
+
+        if(otherTag == "Goal")
+        {
+            ClearText.SetActive(true);
+            ABottam.SetActive(true);
+        }
+
+        if(otherTag == "Next")
+        {
+            SceneManager.LoadScene("SampleScene");
         }
 
     }

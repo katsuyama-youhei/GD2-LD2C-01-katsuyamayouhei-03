@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 892f320aeb1a36e41bf71adec975e1f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f0a11c1b93f1734fa9ed2535139dc56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,9 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163975d4829ad6044b84905f9663d9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondSprite: {fileID: 21300000, guid: 1f0a11c1b93f1734fa9ed2535139dc56, type: 3}
+  secondSprite: {fileID: 21300000, guid: 892f320aeb1a36e41bf71adec975e1f6, type: 3}
   therdSprite: {fileID: 21300000, guid: c8e5fa3418feae24f89a5c03192a9589, type: 3}
   count: 3
+  blockParticle: {fileID: 4770885853717891661, guid: ba3bcb95de4c08d4d987654a6b58d21e, type: 3}
 --- !u!66 &-2544427247624317526
 CompositeCollider2D:
   m_ObjectHideFlags: 0

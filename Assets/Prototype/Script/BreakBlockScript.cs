@@ -14,6 +14,8 @@ public class BreakBlockScript : MonoBehaviour
     private float lostLifeTime;
     private bool isBreack = false;
 
+    public GameObject blockParticle;
+
    // private CompositeCollider2D com;
 
    // public float newAlpha = 0.5f;
@@ -80,6 +82,11 @@ public class BreakBlockScript : MonoBehaviour
 
             if (count <= 0)
             {
+                for (int i = 0; i < 8; i++)
+                {
+                    Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
+                    Instantiate(blockParticle, pos, Quaternion.identity);
+                }
                 Destroy(gameObject);
             }
         }
